@@ -20,7 +20,7 @@ export default function RootLayout({
       <body className={urbanist.className}>
         <Header />
         {children}
-        <div className="h-[500vh]"></div>
+        <div className="h-[50vh]"></div>
       </body>
     </html>
   );
