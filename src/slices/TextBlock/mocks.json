@@ -1,0 +1,20 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Mollit sint pariatur fugiat qui duis velit labore do pariatur et mollit magna."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
