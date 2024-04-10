@@ -27,7 +27,7 @@ export default function ContentList({
 
   const [currentItem, setCurrentItem] = React.useState<number | null>(null);
 
-  const urlPrefix = contentType === "Blog" ? "/blog" : "/projects";
+  const urlPrefix = contentType === "Blog" ? "/blog" : "/project";
 
   const lastMousePos = useRef({ x: 0, y: 0 });
 
