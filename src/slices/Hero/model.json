@@ -32,6 +32,52 @@
             "label": "Tag Line",
             "placeholder": ""
           }
+        },
+        "sub_tag_line": {
+          "type": "Text",
+          "config": {
+            "label": "Sub Tag Line",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "resume_button_title": {
+          "type": "Text",
+          "config": {
+            "label": "Resume Button Title",
+            "placeholder": ""
+          }
+        },
+        "resume_button_link": {
+          "type": "Link",
+          "config": {
+            "label": "Resume Button Link",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "works_button_title": {
+          "type": "Text",
+          "config": {
+            "label": "Works Button Title",
+            "placeholder": ""
+          }
+        },
+        "works_button_link": {
+          "type": "Link",
+          "config": {
+            "label": "Works Button Link",
+            "placeholder": "",
+            "select": null
+          }
         }
       },
       "items": {}

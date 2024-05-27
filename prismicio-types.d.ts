@@ -168,6 +168,7 @@ export type HomepageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | ContactSlice
   | ContentIndexSlice
   | TechListSlice
   | AboutSlice;
@@ -573,6 +574,81 @@ type AboutSliceVariation = AboutSliceDefault;
 export type AboutSlice = prismic.SharedSlice<"about", AboutSliceVariation>;
 
 /**
+ * Primary content in *Contact → Primary*
+ */
+export interface ContactSliceDefaultPrimary {
+  /**
+   * Title field in *Contact → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Subtitle field in *Contact → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.primary.subtitle
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subtitle: prismic.KeyTextField;
+
+  /**
+   * CTATitle field in *Contact → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.primary.ctatitle
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  ctatitle: prismic.KeyTextField;
+
+  /**
+   * CTALink field in *Contact → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.primary.ctalink
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  ctalink: prismic.LinkField;
+}
+
+/**
+ * Default variation for Contact Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ContactSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Contact*
+ */
+type ContactSliceVariation = ContactSliceDefault;
+
+/**
+ * Contact Shared Slice
+ *
+ * - **API ID**: `contact`
+ * - **Description**: Contact
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactSlice = prismic.SharedSlice<
+  "contact",
+  ContactSliceVariation
+>;
+
+/**
  * Primary content in *ContentIndex → Primary*
  */
 export interface ContentIndexSliceDefaultPrimary {
@@ -690,6 +766,66 @@ export interface HeroSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   tag_line: prismic.KeyTextField;
+
+  /**
+   * Sub Tag Line field in *Hero → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.primary.sub_tag_line
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  sub_tag_line: prismic.KeyTextField;
+
+  /**
+   * Description field in *Hero → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Resume Button Title field in *Hero → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.primary.resume_button_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  resume_button_title: prismic.KeyTextField;
+
+  /**
+   * Resume Button Link field in *Hero → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.primary.resume_button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  resume_button_link: prismic.LinkField;
+
+  /**
+   * Works Button Title field in *Hero → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.primary.works_button_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  works_button_title: prismic.KeyTextField;
+
+  /**
+   * Works Button Link field in *Hero → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.primary.works_button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  works_button_link: prismic.LinkField;
 }
 
 /**
@@ -909,6 +1045,10 @@ declare module "@prismicio/client" {
       AboutSliceDefaultPrimary,
       AboutSliceVariation,
       AboutSliceDefault,
+      ContactSlice,
+      ContactSliceDefaultPrimary,
+      ContactSliceVariation,
+      ContactSliceDefault,
       ContentIndexSlice,
       ContentIndexSliceDefaultPrimary,
       ContentIndexSliceVariation,

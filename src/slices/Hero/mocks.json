@@ -17,8 +17,53 @@
 				"__TYPE__": "FieldContent",
 				"value": "fair",
 				"type": "Text"
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Do esse laborum velit mollit aliquip et culpa consequat occaecat irure consequat dolore."
+						}
+					}
+				]
+			},
+			"sub_tag_line": {
+				"__TYPE__": "FieldContent",
+				"value": "perfectly",
+				"type": "Text"
+			},
+			"resume_button_title": {
+				"__TYPE__": "FieldContent",
+				"value": "congress",
+				"type": "Text"
+			},
+			"works_button_title": {
+				"__TYPE__": "FieldContent",
+				"value": "are",
+				"type": "Text"
+			},
+			"resume_button_link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com"
+				}
+			},
+			"works_button_link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://twitter.com"
+				}
 			}
 		},
-		"items": []
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
 	}
 ]
