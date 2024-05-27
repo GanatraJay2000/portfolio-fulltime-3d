@@ -11,7 +11,12 @@ export type ImageBlockProps = SliceComponentProps<Content.ImageBlockSlice>;
  * Component for "ImageBlock" Slices.
  */
 const ImageBlock = ({ slice }: ImageBlockProps): JSX.Element => {
-  return <PrismicNextImage field={slice.primary.image} />;
+  return (
+    <PrismicNextImage
+      field={slice.primary.image}
+      alt={slice.primary.image.alt ?? ("Image" as any)}
+    />
+  );
 };
 
 export default ImageBlock;

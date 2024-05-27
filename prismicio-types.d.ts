@@ -4,7 +4,10 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type BlogPostDocumentDataSlicesSlice = ImageBlockSlice | TextBlockSlice;
+type BlogPostDocumentDataSlicesSlice =
+  | ImageGallerySlice
+  | ImageBlockSlice
+  | TextBlockSlice;
 
 /**
  * Content for Blog Post documents
@@ -232,7 +235,10 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-type ProjectDocumentDataSlicesSlice = ImageBlockSlice | TextBlockSlice;
+type ProjectDocumentDataSlicesSlice =
+  | ImageGallerySlice
+  | ImageBlockSlice
+  | TextBlockSlice;
 
 /**
  * Content for Project documents
@@ -901,6 +907,51 @@ export type ImageBlockSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *ImageGallery → Items*
+ */
+export interface ImageGallerySliceDefaultItem {
+  /**
+   * image field in *ImageGallery → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_gallery.items[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for ImageGallery Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageGallerySliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<ImageGallerySliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *ImageGallery*
+ */
+type ImageGallerySliceVariation = ImageGallerySliceDefault;
+
+/**
+ * ImageGallery Shared Slice
+ *
+ * - **API ID**: `image_gallery`
+ * - **Description**: ImageGallery
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageGallerySlice = prismic.SharedSlice<
+  "image_gallery",
+  ImageGallerySliceVariation
+>;
+
+/**
  * Primary content in *TechList → Primary*
  */
 export interface TechListSliceDefaultPrimary {
@@ -1061,6 +1112,10 @@ declare module "@prismicio/client" {
       ImageBlockSliceDefaultPrimary,
       ImageBlockSliceVariation,
       ImageBlockSliceDefault,
+      ImageGallerySlice,
+      ImageGallerySliceDefaultItem,
+      ImageGallerySliceVariation,
+      ImageGallerySliceDefault,
       TechListSlice,
       TechListSliceDefaultPrimary,
       TechListSliceDefaultItem,
