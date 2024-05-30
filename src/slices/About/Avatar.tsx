@@ -58,7 +58,7 @@ export default function Avatar({ image, className }: AvatarProps) {
       if (typeof window !== "undefined")
         window.addEventListener("mousemove", windowMouseMoved);
     };
-  }, []);
+  }, [windowMouseMoved]);
 
   useGSAP(
     (context, contextSafe) => {
