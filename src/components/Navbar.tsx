@@ -55,15 +55,13 @@ export default function NavBar({
                   field={link}
                   onClick={() => setOpen(false)}
                   aria-current={
-                    pathname.includes(asLink(link) as string)
-                      ? "page"
-                      : undefined
+                    pathname == (asLink(link) as string) ? "page" : undefined
                   }
                 >
                   <span
                     className={clsx(
                       "absolute inset-0 z-0 h-full translate-y-12 rounded bg-yellow-300 transition-transform duration-300 ease-in-out group-hover:translate-y-0",
-                      pathname.includes(asLink(link) as string)
+                      pathname == (asLink(link) as string)
                         ? "translate-y-6"
                         : "translate-y-18"
                     )}
