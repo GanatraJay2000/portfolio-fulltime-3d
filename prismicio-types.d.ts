@@ -105,7 +105,7 @@ export type BlogPostDocument<Lang extends string = string> =
     Lang
   >;
 
-type HomepageDocumentDataSlicesSlice = HeroSlice;
+type HomepageDocumentDataSlicesSlice = ContactSlice | HeroSlice;
 
 /**
  * Content for Homepage documents

@@ -17,7 +17,7 @@ const Contact = ({ slice }: ContactProps): JSX.Element => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="mt-40"
+      className=""
     >
       <div className="flex justify-center items-center flex-col text-center text-balance">
         <Heading as="h1" size="xl">

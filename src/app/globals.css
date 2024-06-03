@@ -17,7 +17,12 @@
 }
 
 .my-title-clamp {
-  font-size: clamp(2.5rem, 15vmin, 15rem);
+  font-size: clamp(2.5rem, 14.5vmin, 14.5rem);
+}
+@media (min-width: 750px) and (max-width: 1023px) {
+  .my-title-clamp {
+    font-size: clamp(2.5rem, 13vmin, 14.5rem);
+  }
 }
 
 .background-gradient {
