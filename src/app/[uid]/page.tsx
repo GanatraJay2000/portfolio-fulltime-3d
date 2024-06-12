@@ -4,6 +4,7 @@ import { SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
+import { metadata } from "../layout";
 
 type Params = { uid: string };
 
@@ -27,8 +28,8 @@ export async function generateMetadata({
     .catch(() => notFound());
 
   return {
-    title: page.data.meta_title,
-    description: page.data.meta_description,
+    title: page.data.meta_title ?? metadata.title,
+    description: page.data.meta_description ?? metadata.description,
   };
 }
 

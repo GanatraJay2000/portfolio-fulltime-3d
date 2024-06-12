@@ -3,6 +3,7 @@ import { SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
+import { metadata } from "./layout";
 
 export default async function Page() {
   const client = createClient();
@@ -16,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const page = await client.getSingle("homepage");
 
   return {
-    title: page.data.meta_title,
-    description: page.data.meta_description,
+    title: page.data.meta_title ?? metadata.title,
+    description: page.data.meta_description ?? metadata.description,
   };
 }

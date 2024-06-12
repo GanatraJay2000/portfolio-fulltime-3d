@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { createClient } from "@/prismicio";
 import ContentBody from "@/components/ContentBody";
+import { metadata } from "@/app/layout";
 
 type Params = { uid: string };
 
@@ -25,8 +26,8 @@ export async function generateMetadata({
     .catch(() => notFound());
 
   return {
-    title: page.data.meta_title,
-    description: page.data.meta_description,
+    title: page.data.meta_title ?? metadata.title,
+    description: page.data.meta_description ?? metadata.description,
   };
 }
 
