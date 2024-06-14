@@ -1,0 +1,39 @@
+{
+  "id": "video",
+  "type": "SharedSlice",
+  "name": "Video",
+  "description": "Video",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "url": {
+          "type": "Link",
+          "config": {
+            "label": "URL",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "orientation": {
+          "type": "Select",
+          "config": {
+            "label": "Orientation",
+            "placeholder": "",
+            "options": [
+              "Landscape",
+              "Portrait",
+              "Square"
+            ]
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
