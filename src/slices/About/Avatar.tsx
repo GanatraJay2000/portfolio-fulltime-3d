@@ -53,12 +53,12 @@ export default function Avatar({ image, className }: AvatarProps) {
       );
   });
 
-  useEffect(() => {
-    return () => {
-      if (typeof window !== "undefined")
-        window.addEventListener("mousemove", windowMouseMoved);
-    };
-  }, [windowMouseMoved]);
+  // useEffect(() => {
+  //   return () => {
+  //     if (typeof window !== "undefined")
+  //       window.addEventListener("mousemove", windowMouseMoved);
+  //   };
+  // }, [windowMouseMoved]);
 
   useGSAP(
     (context, contextSafe) => {
