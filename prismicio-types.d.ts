@@ -1073,16 +1073,6 @@ export type TextBlockSlice = prismic.SharedSlice<
  */
 export interface VideoSliceDefaultPrimary {
   /**
-   * URL field in *Video → Primary*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: video.primary.url
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  url: prismic.LinkField;
-
-  /**
    * Orientation field in *Video → Primary*
    *
    * - **Field Type**: Select
@@ -1091,6 +1081,16 @@ export interface VideoSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#select
    */
   orientation: prismic.SelectField<"Landscape" | "Portrait" | "Square">;
+
+  /**
+   * URL field in *Video → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: video.primary.url
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  url: prismic.KeyTextField;
 }
 
 /**

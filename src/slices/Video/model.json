@@ -12,14 +12,6 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "url": {
-          "type": "Link",
-          "config": {
-            "label": "URL",
-            "placeholder": "",
-            "select": null
-          }
-        },
         "orientation": {
           "type": "Select",
           "config": {
@@ -30,6 +22,13 @@
               "Portrait",
               "Square"
             ]
+          }
+        },
+        "url": {
+          "type": "Text",
+          "config": {
+            "label": "URL",
+            "placeholder": ""
           }
         }
       },

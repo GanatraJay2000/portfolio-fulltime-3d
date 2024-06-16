@@ -3,17 +3,15 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"url": {
-				"__TYPE__": "LinkContent",
-				"value": {
-					"__TYPE__": "ExternalLink",
-					"url": "https://prismic.io"
-				}
-			},
 			"orientation": {
 				"__TYPE__": "FieldContent",
 				"value": "Landscape",
 				"type": "Select"
+			},
+			"url": {
+				"__TYPE__": "FieldContent",
+				"value": "outer",
+				"type": "Text"
 			}
 		},
 		"items": []
