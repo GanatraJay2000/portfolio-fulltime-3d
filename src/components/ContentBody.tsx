@@ -27,8 +27,10 @@ export default async function ContentBody({
 
   return (
     <Bounded as="article">
-      <div className="rounded-xl border-2 border-slate-800 bg-slate-900 px-4 py-10 md:px-8 md:pt-20 md:pb-10">
-        <Heading as="h1">{page.data.title}</Heading>
+      <div className="rounded-xl border-2 border-slate-800 bg-slate-900 px-4 py-10 md:px-8 md:pt-20 md:pb-10 w-full min-[905px]:w-[90ch] mx-auto">
+        <Heading as="h1" size="md">
+          {page.data.title}
+        </Heading>
         <div className="flex gap-4 text-yellow-400 text-xl font-bold">
           {page.tags.map((tag, index) => (
             <span key={index} className="">
