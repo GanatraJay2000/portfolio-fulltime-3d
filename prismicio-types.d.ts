@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type BlogPostDocumentDataSlicesSlice =
+  | MarkdownBlockSlice
   | VideoSlice
   | ImageGallerySlice
   | ImageBlockSlice
@@ -237,6 +238,7 @@ export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
 type ProjectDocumentDataSlicesSlice =
+  | MarkdownBlockSlice
   | VideoSlice
   | ImageGallerySlice
   | ImageBlockSlice
@@ -954,6 +956,51 @@ export type ImageGallerySlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *MarkdownBlock → Primary*
+ */
+export interface MarkdownBlockSliceDefaultPrimary {
+  /**
+   * Markdown field in *MarkdownBlock → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: markdown_block.primary.markdown
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  markdown: prismic.RichTextField;
+}
+
+/**
+ * Default variation for MarkdownBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MarkdownBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<MarkdownBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *MarkdownBlock*
+ */
+type MarkdownBlockSliceVariation = MarkdownBlockSliceDefault;
+
+/**
+ * MarkdownBlock Shared Slice
+ *
+ * - **API ID**: `markdown_block`
+ * - **Description**: MarkdownBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MarkdownBlockSlice = prismic.SharedSlice<
+  "markdown_block",
+  MarkdownBlockSliceVariation
+>;
+
+/**
  * Primary content in *TechList → Primary*
  */
 export interface TechListSliceDefaultPrimary {
@@ -1170,6 +1217,10 @@ declare module "@prismicio/client" {
       ImageGallerySliceDefaultItem,
       ImageGallerySliceVariation,
       ImageGallerySliceDefault,
+      MarkdownBlockSlice,
+      MarkdownBlockSliceDefaultPrimary,
+      MarkdownBlockSliceVariation,
+      MarkdownBlockSliceDefault,
       TechListSlice,
       TechListSliceDefaultPrimary,
       TechListSliceDefaultItem,
