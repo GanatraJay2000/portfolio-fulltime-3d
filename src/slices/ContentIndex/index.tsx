@@ -4,6 +4,7 @@ import { Content, isFilled } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import ContentList from "./ContentList";
 import { createClient } from "@/prismicio";
+import GalleryWrapper from "./GalleryWrapper";
 
 /**
  * Props for `ContentIndex`.
@@ -55,6 +56,8 @@ const ContentIndex = async ({
         viewMoreText={slice.primary.view_more_text}
         fallbackItemImage={slice.primary.fallback_item_image}
       />
+
+      {/* <GalleryWrapper /> */}
     </Bounded>
   );
 };
