@@ -25,8 +25,6 @@ export default function ContentList({
 }: ContentListProps) {
   const component = useRef<HTMLDivElement>(null);
   const itemsRef = useRef<Array<HTMLLIElement> | null>([]);
-  const revealRef = useRef<HTMLDivElement>(null);
-
   const urlPrefix = contentType === "Blog" ? "/blog" : "/project";
 
   const spring = {
@@ -53,8 +51,8 @@ export default function ContentList({
   };
 
   const mousePosition = {
-    x: useSpring(0, spring),
-    y: useSpring(0, spring),
+    x: useSpring(window.innerWidth/2, spring),
+    y: useSpring(window.innerHeight/2, spring),
     rotate: useSpring(0, spring),
   };
 
