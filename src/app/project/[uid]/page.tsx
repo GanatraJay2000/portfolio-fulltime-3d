@@ -11,8 +11,16 @@ export default async function Page({ params }: { params: Params }) {
   const page = await client
     .getByUID("project", params.uid)
     .catch(() => notFound());
-
-  return <ContentBody page={page} />;
+  
+  const blogPosts = await client.getAllByType("blog_post", {
+    orderings: {
+      field: "my.blog_post.date",
+      direction: "desc",
+    },
+  });
+  
+  
+  return <ContentBody page={page} recentPosts={ blogPosts.slice(0, 3)} />;
 }
 
 export async function generateMetadata({

@@ -32,6 +32,7 @@ const ContentIndex = async ({
   });
 
   const contentType = slice.primary.content_type || "Blog";
+  console.log("contentType", contentType);
 
   const items = contentType === "Blog" ? blogPosts : projects;
 
