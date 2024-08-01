@@ -12,8 +12,8 @@ export type VideoProps = SliceComponentProps<Content.VideoSlice>;
 const Video = ({ slice }: VideoProps): JSX.Element => {
   const cNames = {
     Landscape: "w-full aspect-[16/9]",
-    Portrait: "w-1/4 aspect-[8/16]",
-    Square: "w-1/2 aspect-[1/1]",
+    Portrait: "md:w-1/4 aspect-[8/16]",
+    Square: "md:w-1/2 aspect-[1/1]",
   };
   type Orientation = "Landscape" | "Portrait" | "Square";
 
