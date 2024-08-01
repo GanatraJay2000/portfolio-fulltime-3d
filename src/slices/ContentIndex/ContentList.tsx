@@ -1,4 +1,5 @@
 "use client";
+
 import { Content, asImageSrc, isFilled } from "@prismicio/client";
 import Link from "next/link";
 import React, { useEffect, useRef } from "react";
@@ -7,7 +8,6 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { motion, useSpring } from "framer-motion";
-import { rotate } from "three/examples/jsm/nodes/Nodes.js";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 type ContentListProps = {
@@ -34,6 +34,21 @@ export default function ContentList({
   };
 
   const lastMousePos = useRef({ x: 0, y: 0, rotate: 0 });
+  
+  const mousePosition = useRef({
+    x: useSpring(0, spring),
+    y: useSpring(0, spring),
+    rotate: useSpring(0, spring),
+  });
+
+  useEffect(()=>{
+    if(typeof window !== "undefined") {
+      mousePosition.current.x.set(component.current!.getBoundingClientRect().width / 2 - 110);
+      mousePosition.current.y.set(itemsRef.current![0].getBoundingClientRect().height*1.5);
+    }
+    
+  }, [])
+  
 
   const mouseMove = (e: any) => {
     const { clientX, clientY } = e;
@@ -44,17 +59,13 @@ export default function ContentList({
     const speed = Math.sqrt(Math.pow(targetX - lastMousePos.current.x, 2));
     const rotation = speed * (targetX > lastMousePos.current.x ? 1 : -1);
 
-    mousePosition.rotate.set(rotation);
-    mousePosition.x.set(targetX);
-    mousePosition.y.set(targetY);
+    mousePosition.current.rotate.set(rotation);
+    mousePosition.current.x.set(targetX);
+    mousePosition.current.y.set(targetY);
     lastMousePos.current = { x: targetX, y: targetY, rotate: rotation };
   };
 
-  const mousePosition = {
-    x: useSpring(window.innerWidth/2, spring),
-    y: useSpring(window.innerHeight/2, spring),
-    rotate: useSpring(0, spring),
-  };
+  
 
   return (
     <div ref={component}>
@@ -92,9 +103,9 @@ export default function ContentList({
                   </span>
                   <motion.div
                     style={{
-                      x: mousePosition.x,
-                      y: mousePosition.y,
-                      rotate: mousePosition.rotate,
+                      x: mousePosition.current.x,
+                      y: mousePosition.current.y,
+                      rotate: mousePosition.current.rotate,
                       backgroundImage: `url(${item.data.hover_image.url})`,
                     }}
                     className="!pointer-events-none bg-cover bg-center h-[320px] w-[220px] opacity-0 group-hover:opacity-100 fixed top-0 rounded-xl"
