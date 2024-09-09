@@ -5,6 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { cn } from "@/util/cn";
 import LocoScroll from "@/components/LocoScroll";
+import { PrismicPreview } from "@prismicio/next";
+import { repositoryName } from "@/prismicio";
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
@@ -26,6 +28,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <PrismicPreview repositoryName={repositoryName} />
           <div className="absolute inset-0 -z-50 max-h-screen background-gradient"></div>
           <div className="absolute pointer-events-none inset-0 -z-40 h-full bg-[url('/noisetexture.jpg')] opacity-20 mix-blend-soft-light"></div>
         </body>
