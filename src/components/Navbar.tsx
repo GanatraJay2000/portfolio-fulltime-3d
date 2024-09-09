@@ -32,6 +32,24 @@ function NameLogo({ name }: { name: KeyTextField }) {
     gsap.to(".hover2", { width: 0, duration: 0.5, ease: "power3.inOut" });
   });
 
+  useGSAP(
+    () => {
+      gsap.to(".hover", {
+        width: 0,
+        duration: 0.5,
+        ease: "power3.inOut",
+        delay: 2,
+      });
+      gsap.to(".hover2", {
+        width: 0,
+        duration: 0.5,
+        ease: "power3.inOut",
+        delay: 2,
+      });
+    },
+    { scope: component }
+  );
+
   return (
     <Link
       href="/"
@@ -42,9 +60,9 @@ function NameLogo({ name }: { name: KeyTextField }) {
       onMouseLeave={() => mouseLeave()}
     >
       <div>{minName?.[0]?.[0]}</div>
-      <div className="w-0 hover overflow-hidden">{minName?.[0]?.slice(1)}</div>
+      <div className="hover overflow-hidden">{minName?.[0]?.slice(1)}</div>
       <div>{minName?.[1]?.[0]}</div>
-      <div className="w-0 hover2 overflow-hidden">{minName?.[1]?.slice(1)}</div>
+      <div className="hover2 overflow-hidden">{minName?.[1]?.slice(1)}</div>
     </Link>
   );
 }
