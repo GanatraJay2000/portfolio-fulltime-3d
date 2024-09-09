@@ -1,5 +1,9 @@
 import { useLoader, useFrame } from "@react-three/fiber";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import {
+  GLTFLoader,
+  DRACOLoader,
+  KTX2Loader,
+} from "three/examples/jsm/Addons.js";
 import { Canvas } from "@react-three/fiber";
 import { ContactShadows, Float, Environment } from "@react-three/drei";
 import { Suspense, useRef, useState, useEffect } from "react";
@@ -28,21 +32,21 @@ function Model() {
             rotateAnim={[0, 2.5, 0]}
           />
           <MyModel
-            assetPath="/assets/statue_of_liberty.glb"
+            assetPath="/assets/sol_re.glb"
             position={[-3, -3, 4]}
             scale={[0.25, 0.25, 0.25]}
             rotation={[0, 0, 0]}
             speed={0.7}
           />
           <MyModel
-            assetPath="/assets/sharingan.glb"
+            assetPath="/assets/sharingan_re.glb"
             scale={[0.5, 0.5, 0.5]}
             position={[5, 2, 3]}
             rotation={[0, Math.PI / 2, 0]}
             rotateAnim={[2.5, 1.5, 0.5]}
           />
           <MyModel
-            assetPath="/assets/straw_hat.glb"
+            assetPath="/assets/straw_hat_re.glb"
             scale={[0.75, 0.75, 0.75]}
             position={[4, 4, 4]}
             rotation={[Math.PI / 4 - 0.85, 0, 0]}
@@ -95,22 +99,23 @@ function MyModel({
   speed = 0,
   floatIntensity = 5,
 }) {
-  const gltf = useLoader(GLTFLoader, assetPath);
+  // const gltf = useLoader(GLTFLoader, assetPath);
   const myMesh = useRef(null);
-  const { contextSafe } = useGSAP({ scope: myMesh.current });
+  const dracoLoader = new DRACOLoader();
+  dracoLoader.setDecoderPath("/assets/draco/");
+
+  // const ktx2Loader = new KTX2Loader();
+  // ktx2Loader.setTranscoderPath("https://unpkg.com/browse/three@0.167.1/examples/jsm/libs/basis/");
+
+  const gltf = useLoader(GLTFLoader, assetPath, (loader) => {
+    loader.setDRACOLoader(dracoLoader);
+  });
 
   useFrame(({ clock }) => {
     myMesh.current.rotation.x = clock.getElapsedTime() * rotateAnim[0];
     myMesh.current.rotation.y = clock.getElapsedTime() * rotateAnim[1];
     myMesh.current.rotation.z = clock.getElapsedTime() * rotateAnim[2];
   });
-
-  // const handleClick = contextSafe((e) => {
-  //   //rotate using gsap
-  //   gsap.to(e.object.rotation, {
-  //     y: e.object.rotation.x + Math.PI * 2,
-  //   });
-  // });
 
   return (
     <Float speed={speed} floatIntensity={floatIntensity}>
@@ -120,7 +125,6 @@ function MyModel({
         scale={scale}
         position={position}
         rotation={rotation}
-        // onClick={handleClick}
       />
     </Float>
   );

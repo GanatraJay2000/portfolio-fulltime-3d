@@ -14,7 +14,6 @@ gsap.registerPlugin(useGSAP);
 
 function NameLogo({ name }: { name: KeyTextField }) {
   const minName = name?.split(" ");
-  const [nameVal, setNameVal] = useState(minName ?? "");
 
   const component = useRef(null);
   const { contextSafe } = useGSAP({ scope: component });
