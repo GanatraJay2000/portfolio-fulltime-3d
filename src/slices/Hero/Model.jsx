@@ -72,6 +72,13 @@ function Model() {
             speed={3}
             rotateAnim={[0, 2, 0]}
           />
+          <MyModel
+            assetPath="/assets/spotify.glb"
+            scale={[0.35, 0.35, 0.15]}
+            position={[-4, 1, -1]}
+            speed={2.2}
+            rotateAnim={[2, 2, 2]}
+          />
           <ContactShadows
             position={[0, -3.5, 0]}
             opacity={0.65}
