@@ -54,31 +54,33 @@ function Model() {
             rotateAnim={[1, 1, 1]}
           />
           <MyModel
-            assetPath="/assets/linkedIn.glb"
-            scale={[0.75, 0.75, 0.75]}
-            position={[0, -0.5, 4]}
-            speed={1}
-          />
-          <MyModel
             assetPath="/assets/aws.glb"
             scale={[0.75, 0.75, 0.75]}
-            position={[-3, 4, -1]}
+            position={[-4, 4, -1]}
             speed={1.5}
           />
           <MyModel
-            assetPath="/assets/react.glb"
+            assetPath="/assets/linkedIn.glb"
+            position={[-5, 1, -1]}
+            speed={1}
+            rotateAnim={[0.3, 0.3, 0.3]}
             scale={[0.75, 0.75, 0.75]}
-            position={[1, 4, -4]}
-            speed={3}
-            rotateAnim={[0, 2, 0]}
           />
           <MyModel
             assetPath="/assets/spotify.glb"
-            scale={[0.35, 0.35, 0.15]}
-            position={[-4, 1, -1]}
-            speed={2.2}
-            rotateAnim={[2, 2, 2]}
+            scale={[0.5, 0.5, 0.2]}
+            position={[1, 3, 4]}
+            speed={0.2}
+            rotateAnim={[1, 1, 1]}
           />
+          <MyModel
+            scale={[0.75, 0.75, 0.75]}
+            position={[0, -0.5, -4]}
+            assetPath="/assets/react.glb"
+            speed={3}
+            rotateAnim={[0, 2, 0]}
+          />
+
           <ContactShadows
             position={[0, -3.5, 0]}
             opacity={0.65}
